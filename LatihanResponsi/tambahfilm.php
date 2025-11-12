@@ -4,7 +4,7 @@ include "koneksi.php";
 if (isset($_POST['tambah'])) {
     $judul = $_POST['judul'];
     $sutradara = $_POST['sutradara'];
-    $harga = (int)$_POST['harga'];
+    $harga = $_POST['harga'];
 
     if (!empty($judul) && !empty($sutradara) && !empty($harga)) {
         $stmt = $conn->prepare("INSERT INTO film (judul_film, sutradara, harga_tiket) VALUES (?, ?, ?)");
@@ -62,5 +62,6 @@ if (isset($_POST['tambah'])) {
         </form>
     </section>
 </body>
+
 
 </html>
