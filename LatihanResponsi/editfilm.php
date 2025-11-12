@@ -1,23 +1,20 @@
 <?php
 include "koneksi.php";
 
-if (!isset($_GET['id'])) {
-    header("Location: index.php");
-    exit;
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $stmt = $conn->prepare("SELECT * FROM film WHERE id_film = ?");
+    $stmt->bind_param('i', $id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $data = $result->fetch_assoc();
 }
-
-$id = $_GET['id'];
-$stmt = $conn->prepare("SELECT * FROM film WHERE id_film = ?");
-$stmt->bind_param('i', $id);
-$stmt->execute();
-$result = $stmt->get_result();
-$data = $result->fetch_assoc();
 
 if (isset($_POST['edit'])) {
     $id = $_POST['id'];
     $judul = $_POST['judul'];
     $sutradara = $_POST['sutradara'];
-    $harga = (int)$_POST['harga'];
+    $harga = $_POST['harga'];
 
     if (!empty($judul) && !empty($sutradara) && !empty($harga)) {
         $update = $conn->prepare("UPDATE film SET judul_film = ?, sutradara = ?, harga_tiket = ? WHERE id_film = ?");
