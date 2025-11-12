@@ -1,0 +1,27 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  width: 60%;
+  border: 1px solid rgba(0, 0, 0, 0.137);
+  margin-top: 3rem;
+  box-shadow: 1px 1px 5px 3px rgba(128, 128, 128, 0.284);
+}
+
+.regist-form {
+  margin-top: 1rem;
+  width: 90%;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.table thead th {
+  background-color: #283c50;
+  color: white;
+}
